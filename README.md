@@ -8,7 +8,7 @@ Hozz létre egy `src` nevűt &rarr; felette `Mark as` opciónál válaszd, hogy 
 Készíts ebbe a mappában egy  `GameOfThrones` osztályt és írj bele egy `main()` metódust!
 Itt fog játszódni az igazi trónok harca!
 
-## Valar Morghulis
+## Valar Morghulis!
 Valar morghulis, avagy minden embernek meg kell halnia. 
 De ahhoz, hogy meg tudjanak halni, először létre kéne hoznunk őket.
 Vegyél fel egy `Character` osztályt, ami taralmazza a szereplő nevét (`name`)
@@ -35,7 +35,7 @@ a setter biztosítsa azt a működést, hogy csak férfit tudunk eunuch-ká alak
 más változtatást ne lehessen végrehajtani!
 Ellenőrizd le a metódusod működését!
 
-## Winter is Coming
+## Winter is Coming!
 
 Westerosban nemes családok versengenek egymással évszázadok óta.
 Ezen családokat házaknak hívjuk és minden háznak van egy jelmondata.
@@ -70,7 +70,7 @@ Készíts egy `Noble` osztályt, ami a `Character` osztályt egészíti ki egy `
 Az osztály toString metódusa jelenítse meg a nemes ember adatait ebben a formátumban:
 `Cersei of house LANNISTER has 500000 gold dragons.`
 
-## The seed is strong
+## The seed is strong.
 Előfordulhat, hogy egy szereplő több nemes házhoz is tartozik 
 (pl. hivatalosan Joffrey nemcsak Lannister, de Baratheon is), 
 ezért módosítsd a `Noble` osztály`house` fieldjét, hogy több házhoz is tartozhasson egy szereplő!
@@ -124,9 +124,10 @@ Próbáld ki!
 a ház(ai)nak a jelmondat(ai)t angolul!
 
 
-## Stick 'em with the pointy end
-Hogyan oldanád meg, hogy minden karakternek lehessenek fegyverei és ezek a fegyverek
+## Stick 'em with the pointy end!
+Hogyan oldanád meg, hogy minden karakternek lehessenek különböző típusú fegyverei és ezek a fegyverek
 jellemezhetőek legyenek adatokkal?
+Az alábbi fegyvertípusokat különböztetjük meg:
 
 **Közelharc** (`melee`): 
 - kard (`sword`)
@@ -160,6 +161,7 @@ Legyen a `MeleeWeapon` osztálynak egy `MeleeWeaponType` típusú `type` nevű v
 majd a távolharci fegyvereknél is oldd meg hasonlóképpen a típus beállítását!
 
 Írj konstruktorokat, próbáld ki a fegyverek léterhozását!
+Ne felejtsd el a `toString()` metódust overrideolni, hogy kiírja az összes adatát!
 
 Minden szereplőnek legyen lehetősége fegyvert birtokolni, ehhez vegyél fel egy `weapons`
 fieldet, ami `Set<Weapon>` típusú (így lehet benne `MeleeWeapon` és `RangedWeapon`
@@ -167,10 +169,80 @@ típusú fegyvereket is tárolni), alapértelmezett inicializáld egy üres (Has
 Írj hozzá `addWeapon(weapon: Weapon)` és `removeWeapon(weaponName: String)` metódusokat
 és egy gettert!
 
+
 Ha mindent jól csináltál, az alábbi kódsornak működnie kell:
 ```
 Character arya = new Noble("Arya", "Winterfell", Gender.FEMALE, Set.of(House.STARK), 30);
+System.out.println(arya.hasWeapons()); // False 
+
 arya.addWeapon(new MeleeWeapon("Valyrian steel dagger", 20, MeleeWeaponType.DAGGER));
 arya.addWeapon(new RangedWeapon("Stolen bow", 10, 40, 5, RangedWeaponType.BOW));
+
+arya.removeWeapon("Stolen bow");
+
+System.out.println(arya.getWeapons()); // [MeleeWeapon{type=DAGGER, name='Valyrian steel dagger', damage=20, range=1}]
 ```
+
+## A Lannister always pays his debts.
+A nemes embereknél a vagyont (`wealth`) jelenleg egy egyszerű szám típussal jellemezzük,
+ám Westerosban nem csak egy féle pénznem van. Megkülönöztetünk arany (`golden`),
+ezüst (`silver`) és réz (`copper`) érméket is.
+
+Hogyan oldanád meg, hogy ezeket külön el tudjuk tárolni?
+Hogyan módosítanád ezt az elgondolt megoldást, ha felmerül, hogy több fajta
+érme (vagy vagyontárgy) is előfordulhat, amit nem tudunk előre?
+
+Tároljuk most el egy Mapben ezeket az értékeket, ahol a kulcs legyen az érme
+neve, az érték pedig az összértéke ezeknek az érméknek! 
+A `wealth` fieldet töröld ki, helyette vedd fel ezt a mapet `coins` néven és
+állíts be neki egy üres mapet alapértelmezett értékként!
+
+Írd át a `Noble` konstuktorát, hogy ne várja paraméterként a vagyont semmilyen formában,
+azt majd csak "születés" után tudjuk hozzáadni!
+
+Miket kell most módosítanod a `Noble` osztályban?
+Milyen metódusok megvalósítására van szükség, hogy biztosítsuk a helyes működést?
+
+<details><summary>Megoldás</summary><pre>
+public void addCoins(String coinType, int amount) {
+  // TODO
+}
+public void removeCoins(String coinType, int amount) { 
+  // TODO
+}
+</pre></details>
+
+Ezen felül kelleni fog még egy `getWealth()` metódus is, ami visszaadja
+az érméink összértékét! Az egyszerűség kedvéért legyen
+- 1 arany = 100 bronz
+- 1 ezüst = 10 bronz
+
+és a többi érmetípussal még nem foglalkozunk!
+
+Az alábbi működést várjuk:
+```
+Noble cersei = new Noble("Cersei", "Casterly Rock", Gender.FEMALE, Set.of(House.LANNISTER));
+cersei.addHouse(House.BARATHEON);
+cersei.addCoins("gold", 1); // 1 gold -> 100 copper
+cersei.addCoins("silver", 1);
+cersei.addCoins("silver", 2); // 1+2 silver -> 30 copper
+cersei.addCoins("copper", 3); // 3 copper -> 3 copper
+System.out.println(cersei); // Cersei of house LANNISTER, BARATHEON has 133 wealth in copper.
+```
+
+<details><summary>Segítség</summary><p>
+Inicializálj egy totalWealth változót, adj neki értékül nullát!
+Iterálj végig a Map Entry-jein: mentsd el egy változóba az érme nevét, 
+és egy másik változóba az értékét! Utána egy switchen belül álltísd a totalWealth-et
+az érme nevének megfelelően!
+</p></details>
+
+<details><summary>Még több segítség</summary><pre>
+switch (coinType) {
+    case "gold" -> totalWealth += amount * 100;
+    case "silver" -> totalWealth += amount * 10;
+    case "copper" -> totalWealth += amount;
+}
+</pre></details>
+
 
