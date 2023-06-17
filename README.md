@@ -90,7 +90,7 @@ Implementálj egy `addHouse(house: House)` és egy `removeHouse(house: House)` m
 próbáld is ki őket!
 
 Ha ezzel megvagy, szemet szúrhat, hogy a toString() metódus, most ebben a formátumban írja ki
-a nemes emberünket: `Cersei of house [BARATHEON, LANNISTER] has 500000 gold dragons`.
+a nemes emberünket: `Cersei of house(s) [BARATHEON, LANNISTER] has 500000 gold dragons`.
 Módosítsd, hogy a kapcsos zárójelek lekerüljenek a kiírásból! 
 
 <details><summary>Megoldás</summary><p>
@@ -183,6 +183,8 @@ arya.removeWeapon("Stolen bow");
 System.out.println(arya.getWeapons()); // [MeleeWeapon{type=DAGGER, name='Valyrian steel dagger', damage=20, range=1}]
 ```
 
+Az attack() metódusnak, egyelőre nem kell csinálnia semmit (kivéve a lőszer csökkentését, ahol szükséges)!
+
 ## A Lannister always pays his debts.
 A nemes embereknél a vagyont (`wealth`) jelenleg egy egyszerű szám típussal jellemezzük,
 ám Westerosban nem csak egy féle pénznem van. Megkülönöztetünk arany (`golden`),
@@ -227,7 +229,7 @@ cersei.addCoins("gold", 1); // 1 gold -> 100 copper
 cersei.addCoins("silver", 1);
 cersei.addCoins("silver", 2); // 1+2 silver -> 30 copper
 cersei.addCoins("copper", 3); // 3 copper -> 3 copper
-System.out.println(cersei); // Cersei of house LANNISTER, BARATHEON has 133 wealth in copper.
+System.out.println(cersei); // Cersei of house(s) LANNISTER, BARATHEON has 133 wealth in copper.
 ```
 
 <details><summary>Segítség</summary><p>
@@ -267,4 +269,52 @@ Az osztályhierarchia legyen az alábbi:
 
 Ha kell, rendezd az importokat!
 
+## Money buys a man silence for a time, a bolt in the heart buys it forever.
+Implementáljuk karakterek párbaját!
+Vedd fel az alábbi metódust a `Character` osztályba!
+```
+private void initiateFight(Weapon weapon, Character enemy, FightType fightType) {
+  String fightTypeName = fightType == FightType.MELEE ? "melee" : "ranged";
+  System.out.println(this.getName() + " engages in " + fightTypeName + " combat with " + enemy.getName() + ".");
+  weapon.attack(this, enemy);
+}
+```
+A fordító által feldobott hibák alapján módostísd a kódod: vegyél fel egy új
+`FightType` enumot (`MELEE` illetve `RANGED` értékkel) és módosítsd az `attack()`
+metódus szignatúráját!
+
+Írj egy `public abstract boolean isRanged();` metódust a `Weapon` classba és
+implementáld a leszármazott osztályokban!
+
+A `Character` osztályba vedd fel még az alábbi metódust:
+```
+public void fight(Character enemy, FightType fightType) {
+    if (this.hasWeapons()) {
+        for (Weapon weapon : this.getWeapons()) {
+            if ((fightType == FightType.MELEE && !weapon.isRanged()) ||
+                    (fightType == FightType.RANGED && weapon.isRanged())) {
+                initiateFight(weapon, enemy, fightType);
+            }
+        }
+    } else {
+        System.out.println(this.getName() + " has no weapons to fight with.");
+    }
+}
+```
+Értelmezd a kódot! Hogyan fog működni? Hányszor támad a támadó? Visszatámad az áldozat?
+
+Vegyél fel egy élet (`health`) változót alapértelmezetten 100 értékkel a szereplőknek,
+majd írj egy sebződést megvalósító metódust, ami csökkenti a health értékét
+a paraméterként kapott számmal és kiírja a sebződsét az alábbi formátumban:
+`Cersei's health dropped to 80/100.`
+
+<details><summary>Megoldás</summary><pre>
+public void takeDamage(int damage) {
+    this.health -= damage;
+    System.out.println(this.getName() + "'s health dropped to " + this.health + "/100.");
+}
+</pre></details>
+
+Valósítsd meg az `attack()` metódusokat a fegyvereknél, a távharcnál figyelj, hogy
+csak akkor lehessen sebezni, ha van elég lőszer!
 
