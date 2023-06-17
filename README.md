@@ -1,6 +1,6 @@
 # When you play the game of thrones, you win or you die. There is no middle ground.
 
-Készíts egy `src` nevű, forrásskódokat tartalmazó mappát: 
+Készíts egy `src` nevű, forráskódokat tartalmazó mappát: 
 `File` &rarr; `Project Structure` &rarr; 
 `Modules` (Project Settings szekció) &rarr; jobb klikk a mappán &rarr; `New Directory` &rarr;
 Hozz létre egy `src` nevűt &rarr; felette `Mark as` opciónál válaszd, hogy `Sources`!
