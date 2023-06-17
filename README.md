@@ -1,6 +1,11 @@
-# Game of Thrones
+# When you play the game of thrones, you win or you die. There is no middle ground.
 
-Készíts egy `GameOfThrones` osztályt és írj bele egy `main()` metódust!
+Készíts egy `src` nevű, forrásskódokat tartalmazó mappát: 
+`File` &rarr; `Project Structure` &rarr; 
+`Modules` (Project Settings szekció) &rarr; jobb klikk a mappán &rarr; `New Directory` &rarr;
+Hozz létre egy `src` nevűt &rarr; felette `Mark as` opciónál válaszd, hogy `Sources`!
+
+Készíts ebbe a mappában egy  `GameOfThrones` osztályt és írj bele egy `main()` metódust!
 Itt fog játszódni az igazi trónok harca!
 
 ## Valar Morghulis
@@ -93,3 +98,23 @@ Ehhez több jó megoldás létezik,
 érdemes külön felvenni egy <code>getHousesAsString()</code> metódust, ami visszaadja egy String-be összefűzve a
 házakat!
 </p></details>
+
+## When the snows fall and the white winds blow, the lone wolf dies, but the pack survives.
+A házaknak nem csak jelmondataik, de címerállataik is vannak. Bővíts a `House` enumot egy `sigil` mezővel
+és állítsd be az értékeit a házaknak megfelelően:
+- Stark: wolf
+- Lannister: lion
+- Targaryen: dragon
+- Baratheon: stag
+- Greyjoy: kraken
+- Tyrell: rose
+
+## You're mine and I'm yours. If we die we die. But first we'll live.
+Tartsd nyilván a világ populációját (avagy hány példány lett létrehozva a `Character` osztályból)!
+Írj gettert (`getWorldPopulation()`) ehhez az információhoz és próbáld ki!
+
+## What is dead may never die. But rises again, harder and stronger.
+A népesség nyilvántartása nem csak a születéseket, hanem a halálozásokat is magába foglalja.
+Készíts egy `Mortal` interfészt, ami tartalmaz egy `die()` metódust!
+Implementáld ezt a `Character` osztályban, hogy csökkenjen a populáció, ha meghal valaki!
+Próbáld ki!
