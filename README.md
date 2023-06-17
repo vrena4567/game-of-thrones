@@ -53,7 +53,7 @@ jelmondatait magyarul és angolul!
   - Tűz és vér
 - Baratheon
   - Ours is the Fury
-  - Miénk a harag
+  - Miénk a harag 
 - Greyjoy
   - We Do Not Sow
   - Mi nem vetünk
