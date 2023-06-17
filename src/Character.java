@@ -4,10 +4,10 @@ public class Character {
 
     private Gender GENDER;
 
-    public Character(String name, String birthPlace, Gender GENDER) {
+    public Character(String name, String birthPlace, Gender gender) {
         this.name = name;
         this.birthPlace = birthPlace;
-        this.GENDER = GENDER;
+        this.GENDER = gender;
     }
 
 
@@ -15,9 +15,9 @@ public class Character {
         return GENDER;
     }
 
-    public void setGENDER(Gender GENDER) {
-        if(getGENDER().equals(Gender.MALE)) {
-            this.GENDER = GENDER;
+    public void setGENDER(Gender gender) {
+        if(getGENDER().equals(Gender.MALE) && gender.equals(Gender.EUNUCH)) {
+            this.GENDER = gender;
         }
     }
 

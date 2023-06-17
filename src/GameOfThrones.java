@@ -3,5 +3,7 @@ public class GameOfThrones {
         Character stark = new Character("Stark", "Winter is coming", Gender.MALE);
         stark.setGENDER(Gender.EUNUCH);
         System.out.println(stark);
+
+
     }
 }
