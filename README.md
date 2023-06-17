@@ -172,7 +172,7 @@ típusú fegyvereket is tárolni), alapértelmezett inicializáld egy üres (Has
 
 Ha mindent jól csináltál, az alábbi kódsornak működnie kell:
 ```
-character.Character arya = new character.Noble("Arya", "Winterfell", Gender.FEMALE, Set.of(House.STARK), 30);
+Character arya = new character.Noble("Arya", "Winterfell", Gender.FEMALE, Set.of(House.STARK), 30);
 System.out.println(arya.hasWeapons()); // False 
 
 arya.addWeapon(new MeleeWeapon("Valyrian steel dagger", 20, MeleeWeaponType.DAGGER));
