@@ -11,7 +11,7 @@ Itt fog játszódni az igazi trónok harca!
 ## Valar Morghulis!
 Valar morghulis, avagy minden embernek meg kell halnia. 
 De ahhoz, hogy meg tudjanak halni, először létre kéne hoznunk őket.
-Vegyél fel egy `character.Character` osztályt, ami taralmazza a szereplő nevét (`name`)
+Vegyél fel egy `Character` osztályt, ami taralmazza a szereplő nevét (`name`)
 és születési helyét (`birthPlace`)! 
 
 Készíts egy konstruktort, ami ezeket a paramétereket várja és állítja be!
@@ -24,13 +24,13 @@ Hogyan oldanád meg ezt kód szinten?
 </p></details>
 
 ## Yes, all men must die. But we are not men.
-Bővítsük a `character.Character` osztályunkat, hogy el tudja tárolni a szereplő nemét. Ehhez készíts egy
-`character.type.Gender` enumot, aminek a lehetséges értékei: `MALE`, `FEMALE`.
+Bővítsük a `Character` osztályunkat, hogy el tudja tárolni a szereplő nemét. Ehhez készíts egy
+`Gender` enumot, aminek a lehetséges értékei: `MALE`, `FEMALE`.
 
 ## If you think this has a happy ending, you haven't been paying attention.
 Sajnos ebben a brutális világban előfordul csonkítás, kasztrálás is,
-ezért szükségünk lesz egy harmadik `character.type.Gender` értékre: `EUNUCH`.
-A `character.Character` osztályban írj gettert és settert is a nemhez, ám
+ezért szükségünk lesz egy harmadik `Gender` értékre: `EUNUCH`.
+A `Character` osztályban írj gettert és settert is a nemhez, ám
 a setter biztosítsa azt a működést, hogy csak férfit tudunk eunuch-ká alakítani,
 más változtatást ne lehessen végrehajtani!
 Ellenőrizd le a metódusod működését!
@@ -250,20 +250,20 @@ switch (coinType) {
 Rengeteg osztályt definiáltunk, rendezd őket package-ekbe!
 Az osztályhierarchia legyen az alábbi:
 - character
-  - `Character.java`
-  - `Mortal.java`
-  - `Noble.java`
+  - Character.java
+  - Mortal.java
+  - Noble.java
   - _type_
-    - `Gender.java`
-    - `House.java`
+    - Gender.java
+    - House.java
 - combat
-  - `MeleeWeapon.java`
-  - `RangedWeapon.java`
-  - `Weapon.java`
+  - MeleeWeapon.java
+  - RangedWeapon.java
+  - Weapon.java
   - _type_
-    - `MeleeWeaponType.java`
-    - `RangedWeaponType.java`
-- `GameOfThrones.java`
+    - MeleeWeaponType.java
+    - RangedWeaponType.java
+- GameOfThrones.java
 
 Ha kell, rendezd az importokat!
 
