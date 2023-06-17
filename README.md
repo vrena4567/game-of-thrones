@@ -77,7 +77,7 @@ ezért módosítsd a `Noble` osztály`house` fieldjét, hogy több házhoz is ta
 Hogyan oldod ezt meg?
 
 <details><summary>Megoldás</summary><pre>
-private final Set &lt character.type.House &gt houses;
+private final Set &lt type.House &gt houses;
 </pre></details>
 
 Nevezd át a `house` fieldet `houses`-ra - hiszen most már az fejezi ki jobban ennek a fieldnek a célját.
@@ -172,7 +172,7 @@ típusú fegyvereket is tárolni), alapértelmezett inicializáld egy üres (Has
 
 Ha mindent jól csináltál, az alábbi kódsornak működnie kell:
 ```
-Character arya = new character.Noble("Arya", "Winterfell", Gender.FEMALE, Set.of(House.STARK), 30);
+Character arya = new Noble("Arya", "Winterfell", Gender.FEMALE, Set.of(House.STARK), 30);
 System.out.println(arya.hasWeapons()); // False 
 
 arya.addWeapon(new MeleeWeapon("Valyrian steel dagger", 20, MeleeWeaponType.DAGGER));
