@@ -40,7 +40,7 @@ Ellenőrizd le a metódusod működését!
 Westerosban nemes családok versengenek egymással évszázadok óta.
 Ezen családokat házaknak hívjuk és minden háznak van egy jelmondata.
 
-Írj egy `character.type.House` enumot, ami tartalmazza a főbb házakat és képes lekérni az adott házak
+Írj egy `House` enumot, ami tartalmazza a főbb házakat és képes lekérni az adott házak
 jelmondatait magyarul és angolul!
 - Stark
   - Winter is Coming 
@@ -65,7 +65,7 @@ _Természetesen szabad több házat is felvenni. :)_
 
 ## A lion doesn’t concern himself with the opinions of a sheep.
 Nem mindenkinek adatik meg, hogy nemes családba szülessen, ezáltal egy nagyobb házhoz tartozzon.
-Készíts egy `character.Noble` osztályt, ami a `character.Character` osztályt egészíti ki egy `character.type.House` típusú házzal/családdal
+Készíts egy `Noble` osztályt, ami a `Character` osztályt egészíti ki egy `House` típusú házzal/családdal
 (`house`) és egy egyszerű szám típusú vagyonnal (`wealth`)!
 Az osztály toString metódusa jelenítse meg a nemes ember adatait ebben a formátumban:
 `Cersei of house LANNISTER has 500000 gold dragons.`
@@ -73,7 +73,7 @@ Az osztály toString metódusa jelenítse meg a nemes ember adatait ebben a form
 ## The seed is strong.
 Előfordulhat, hogy egy szereplő több nemes házhoz is tartozik 
 (pl. hivatalosan Joffrey nemcsak Lannister, de Baratheon is), 
-ezért módosítsd a `character.Noble` osztály`house` fieldjét, hogy több házhoz is tartozhasson egy szereplő!
+ezért módosítsd a `Noble` osztály`house` fieldjét, hogy több házhoz is tartozhasson egy szereplő!
 Hogyan oldod ezt meg?
 
 <details><summary>Megoldás</summary><pre>
@@ -82,11 +82,11 @@ private final Set &lt character.type.House &gt houses;
 
 Nevezd át a `house` fieldet `houses`-ra - hiszen most már az fejezi ki jobban ennek a fieldnek a célját.
 Adj meg neki alapértelmezett értékként egy üres HashSet-et:
-`private final Set<character.type.House> houses = new HashSet<>();`
+`private final Set<House> houses = new HashSet<>();`
 
-Írj konstruktort a `character.Noble` osztályhoz, majd próbáld ki!
+Írj konstruktort a `Noble` osztályhoz, majd próbáld ki!
 
-Implementálj egy `addHouse(house: character.type.House)` és egy `removeHouse(house: character.type.House)` metódust és 
+Implementálj egy `addHouse(house: House)` és egy `removeHouse(house: House)` metódust és 
 próbáld is ki őket!
 
 Ha ezzel megvagy, szemet szúrhat, hogy a toString() metódus, most ebben a formátumban írja ki
@@ -100,7 +100,7 @@ házakat!
 </p></details>
 
 ## When the snows fall and the white winds blow, the lone wolf dies, but the pack survives.
-A házaknak nem csak jelmondataik, de címerállataik is vannak. Bővíts a `character.type.House` enumot egy `sigil` mezővel
+A házaknak nem csak jelmondataik, de címerállataik is vannak. Bővíts a `House` enumot egy `sigil` mezővel
 és állítsd be az értékeit a házaknak megfelelően:
 - Stark: wolf
 - Lannister: lion
@@ -110,17 +110,17 @@ A házaknak nem csak jelmondataik, de címerállataik is vannak. Bővíts a `cha
 - Tyrell: rose
 
 ## You're mine and I'm yours. If we die we die. But first we'll live.
-Tartsd nyilván a világ populációját (avagy hány példány lett létrehozva a `character.Character` osztályból)!
+Tartsd nyilván a világ populációját (avagy hány példány lett létrehozva a `Character` osztályból)!
 Írj gettert (`getWorldPopulation()`) ehhez az információhoz és próbáld ki!
 
 ## There is only one god and his name is Death, and there is only one thing we say to Death: "Not today."
 A népesség nyilvántartása nem csak a születéseket, hanem a halálozásokat is magába foglalja.
-Készíts egy `character.Mortal` interfészt, ami tartalmaz egy `die()` metódust!
-Implementáld ezt a `character.Character` osztályban, hogy csökkenjen a populáció, ha meghal valaki!
+Készíts egy `Mortal` interfészt, ami tartalmaz egy `die()` metódust!
+Implementáld ezt a `Character` osztályban, hogy csökkenjen a populáció, ha meghal valaki!
 Próbáld ki!
 
 ## What is dead may never die. But rises again, harder and stronger.
-Írd felül ezt a működést, ha nemes ember (`character.Noble`) hal meg, akkor írja ki 
+Írd felül ezt a működést, ha nemes ember (`Noble`) hal meg, akkor írja ki 
 a ház(ai)nak a jelmondat(ai)t angolul!
 
 
@@ -142,7 +142,7 @@ Az alábbi fegyvertípusokat különböztetjük meg:
 - dobókés (`throwing knife`)
 - gerely (`javelin`)
 
-Készíts egy absztrakt `combat.Weapon` osztályt és származztass le belőle egy `combat.MeleeWeapon` és
+Készíts egy absztrakt `Weapon` osztályt és származztass le belőle egy `MeleeWeapon` és
 egy `RangedWeapon` osztályt. Minden fegyvernek legyen egy neve (`name`), egy sebzése
 (`damage`), egy hatótávolsága (`range`) és lehessen vele támadni (`attack()`)!
 
@@ -197,10 +197,10 @@ neve, az érték pedig az összértéke ezeknek az érméknek!
 A `wealth` fieldet töröld ki, helyette vedd fel ezt a mapet `coins` néven és
 állíts be neki egy üres mapet alapértelmezett értékként!
 
-Írd át a `character.Noble` konstuktorát, hogy ne várja paraméterként a vagyont semmilyen formában,
+Írd át a `Noble` konstuktorát, hogy ne várja paraméterként a vagyont semmilyen formában,
 azt majd csak "születés" után tudjuk hozzáadni!
 
-Miket kell most módosítanod a `character.Noble` osztályban?
+Miket kell most módosítanod a `Noble` osztályban?
 Milyen metódusok megvalósítására van szükség, hogy biztosítsuk a helyes működést?
 
 <details><summary>Megoldás</summary><pre>
