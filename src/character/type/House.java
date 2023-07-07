@@ -1,3 +1,4 @@
+package character.type;
 public enum House {
     STARK("Winter is coming", "Közeleg a tél", "wolf"),
     LANNISTER("Hear Me Roar", "Hald üvöltésem", "lion"),

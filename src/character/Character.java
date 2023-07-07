@@ -1,3 +1,5 @@
+package character;
+import character.type.Gender;
 import combat.Weapon;
 
 import javax.swing.plaf.IconUIResource;
