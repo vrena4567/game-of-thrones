@@ -1,6 +1,6 @@
 public enum Gender {
     MALE,
-    FEMAILE,
+    FEMALE,
     EUNUCH;
 
 }

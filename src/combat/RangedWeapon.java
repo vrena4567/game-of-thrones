@@ -20,9 +20,8 @@ public class RangedWeapon extends Weapon {
 
     @Override
     public String toString() {
-        return super.toString() + "RangedWeapon{" +
-                "ammunition=" + ammunition +
-                ", type=" + type +
+        return "RangedWeapon{type= " + type + ", name='" + super.getName() +"', damage=" + super.getDamage() +
+            ", range=" + super.getRange() + ", ammunition=" + ammunition +
                 '}';
     }
 }

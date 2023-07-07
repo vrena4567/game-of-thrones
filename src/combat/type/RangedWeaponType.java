@@ -4,6 +4,7 @@ public enum RangedWeaponType {
     BOW,
     CROSSBOW,
     THROWING_KNIFE,
-    JAVELIN;
+    JAVELIN,
+    DAGGER;
 
 }
