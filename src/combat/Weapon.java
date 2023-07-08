@@ -1,5 +1,8 @@
 package combat;
 
+import character.Character;
+import character.type.FightType;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,6 +10,7 @@ public abstract class Weapon {
     private String name;
     private int damage;
     private int range;
+    public abstract boolean isRanged();
 
     public Weapon(String name, int damage, int range) {
         this.name = name;
@@ -38,8 +42,9 @@ public abstract class Weapon {
         this.range = range;
     }
 
-    public void attack() {
-
+    public void attack(Character character, Character enemy) {
+        enemy.takeDamage(this.getDamage());
+        character.takeDamage(this.getDamage());
     }
 
     @Override

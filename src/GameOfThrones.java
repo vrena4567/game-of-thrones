@@ -1,5 +1,6 @@
 import character.Character;
 import character.Noble;
+import character.type.FightType;
 import character.type.Gender;
 import character.type.House;
 import combat.MeleeWeapon;
@@ -41,5 +42,10 @@ public class GameOfThrones {
         cersei.addCoins("silver", 2); // 1+2 silver -> 30 copper
         cersei.addCoins("copper", 3); // 3 copper -> 3 copper
         System.out.println(cersei); // Cersei of house(s) LANNISTER, BARATHEON has 133 wealth in copper.
+        cersei.addWeapon(new MeleeWeapon("Valyrian steel dagger", 15, 1, MeleeWeaponType.DAGGER));
+        cersei.addWeapon(new RangedWeapon("Stolen bow", 20, 45, 5, RangedWeaponType.BOW));
+
+        arya.fight(cersei, FightType.RANGED);
+
     }
 }

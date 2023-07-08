@@ -1,6 +1,7 @@
 package character;
 import character.type.Gender;
 import combat.Weapon;
+import character.type.FightType;
 
 import javax.swing.plaf.IconUIResource;
 import java.util.HashSet;
@@ -12,6 +13,7 @@ public class Character implements Mortal{
     private Gender GENDER;
     private static int counter = 0;
     private Set<Weapon> weaponSet = new HashSet<>();
+    private int health = 100;
 
 
     public Character(String name, String birthPlace, Gender gender) {
@@ -19,6 +21,29 @@ public class Character implements Mortal{
         this.birthPlace = birthPlace;
         this.GENDER = gender;
         counter++;
+    }
+
+    private void initiateFight(Weapon weapon, Character enemy, FightType fightType) {
+        String fightTypeName = fightType == FightType.MELEE ? "melee" : "ranged";
+        System.out.println(this.getName() + " engages in " + fightTypeName + " combat with " + enemy.getName() + ".");
+        weapon.attack(this, enemy);
+    }
+
+    public void fight(Character enemy, FightType fightType) {
+        if (this.hasWeapons()) {
+            for (Weapon weapon : this.getWeapons()) {
+                if ((fightType == FightType.MELEE && !weapon.isRanged()) ||
+                        (fightType == FightType.RANGED && weapon.isRanged())) {
+                    initiateFight(weapon, enemy, fightType);
+                }
+            }
+        } else {
+            System.out.println(this.getName() + " has no weapons to fight with.");
+        }
+    }
+    public void takeDamage(int damage) {
+        this.health -= damage;
+        System.out.println(this.getName() + "'s health dropped to " + this.health + "/100.");
     }
 
     public boolean hasWeapons() {
@@ -73,8 +98,8 @@ public class Character implements Mortal{
                 ", GENDER=" + GENDER +
                 '}';
     }
-    public String getWeapons() {
-        return weaponSet.toString();
+    public Set<Weapon> getWeapons() {
+        return weaponSet;
     }
 
     @Override

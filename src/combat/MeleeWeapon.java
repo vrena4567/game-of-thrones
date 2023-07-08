@@ -13,6 +13,11 @@ public class MeleeWeapon extends Weapon{
     }
 
     @Override
+    public boolean isRanged() {
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "MeleeWeapon{type= " + type + ", name='" + super.getName() +"', damage=" + super.getDamage() +
                 ", range=" + range +
